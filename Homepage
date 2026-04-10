@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Year Project | Telecom Engineering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Final Year Project</h1>
+    <p>Telecommunications Engineering | Power & Network Systems</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#tech">Technologies</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="about">
+    <h2>About the Project</h2>
+    <p>
+        This project focuses on the design, simulation, and implementation of a telecommunications 
+        system integrating power supply, network infrastructure, and monitoring systems. 
+        It demonstrates real-world engineering applications in telecom environments such as BTS and GPON systems.
+    </p>
+</section>
+
+<section id="features">
+    <h2>Key Features</h2>
+    <ul>
+        <li>Power system modeling and analysis</li>
+        <li>Telecom cabinet protection system</li>
+        <li>Network performance monitoring</li>
+        <li>Simulation using MATLAB/Simulink</li>
+        <li>Real-world deployment concepts</li>
+    </ul>
+</section>
+
+<section id="tech">
+    <h2>Technologies Used</h2>
+    <div class="cards">
+        <div class="card">HTML</div>
+        <div class="card">CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">MATLAB</div>
+        <div class="card">Simulink</div>
+        <div class="card">Telecom Systems</div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: 24301528@student.pnguot.ac.pg</p>
+    <button onclick="showMessage()">Click Me</button>
+</section>
+
+<footer>
+    <p>© 2026 Final Year Project | Telecom Engineering</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
