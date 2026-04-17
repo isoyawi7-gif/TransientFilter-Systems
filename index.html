@@ -120,9 +120,14 @@ canvas {
 
 /* Show nav normally */
 nav {
-    display: flex;
+    display: flex !important;
     justify-content: center;
+    flex-direction: row !important;   /* FORCE horizontal */
     gap: 20px;
+}
+
+nav a {
+    display: inline-block;
 }
 /* ===== MOBILE RESPONSIVE DESIGN ===== */
 @media screen and (max-width: 768px) {
