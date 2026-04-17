@@ -101,54 +101,37 @@ canvas {
 /* ===== MOBILE RESPONSIVE DESIGN ===== */
 @media screen and (max-width: 768px) {
 
-    /* HEADER */
-    header {
-        padding: 25px 15px;
-    }
-
-    header h1 {
-        font-size: 20px;
-    }
-
-    header h2 {
+    /* MENU BUTTON */
+    .menu-toggle {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: #1e293b;
+        color: white;
+        border: none;
         font-size: 16px;
+        cursor: pointer;
     }
 
-    header p {
-        font-size: 14px;
-    }
-
-    /* NAVIGATION - STACK VERTICALLY */
+    /* HIDE NAV BY DEFAULT */
     nav {
+        display: none;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        background: #0f172a;
+        padding: 10px 0;
+    }
+
+    /* SHOW WHEN ACTIVE */
+    nav.active {
+        display: flex;
     }
 
     nav a {
-        margin: 5px 0;
+        margin: 10px 0;
         font-size: 14px;
     }
-
-    /* SECTIONS */
-    section {
-        margin: 10px;
-        padding: 15px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    .content {
-        font-size: 14px;
-    }
-
-    /* BUTTON */
-    button {
-        width: 100%;
-        font-size: 14px;
-    }
+}
 
     /* FOOTER */
     footer {
@@ -318,32 +301,14 @@ document.querySelectorAll("nav a").forEach(anchor => {
     });
 });
 
-// CHART
-let chart;
-
-function generateData() {
-    const data = Array.from({length: 10}, () => Math.floor(Math.random() * 100));
-
-    if (chart) chart.destroy();
-
-    const ctx = document.getElementById('myChart').getContext('2d');
-
-    chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"],
-            datasets: [{
-                label: "Surge Voltage (V)",
-                data: data,
-                fill: false,
-                tension: 0.3
-            }]
-        }
-    });
-}
-
 // AUTO LOAD DATA
 generateData();
+
+    // Mobile Dropdown
+function toggleMenu() {
+    document.querySelector("nav").classList.toggle("active");
+}
+
 </script>
 
 </body>
