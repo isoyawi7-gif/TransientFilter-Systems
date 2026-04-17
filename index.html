@@ -97,6 +97,71 @@ canvas {
     border-radius: 10px;
     padding: 10px;
 }
+
+/* ===== MOBILE RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 768px) {
+
+    /* HEADER */
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    header h2 {
+        font-size: 16px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    /* NAVIGATION - STACK VERTICALLY */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    /* SECTIONS */
+    section {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .content {
+        font-size: 14px;
+    }
+
+    /* BUTTON */
+    button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    /* CANVAS (CHART) */
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
 </style>
 </head>
 
