@@ -3,99 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surge Protection Research - IEEE Style</title>
 
-<title>Surge Protection Research - Iso Yawi</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-/* ===== GLOBAL ===== */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
-    background: linear-gradient(135deg, #020617, #0f172a);
-    color: white;
+    background: #f5f7fb;
+    color: #1f2937;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header {
+    background: white;
     text-align: center;
-    padding: 40px 20px;
-    background: #020617;
-    border-bottom: 2px solid #38bdf8;
+    padding: 30px;
+    border-bottom: 4px solid #1d4ed8;
 }
 
 header h1 {
-    margin-bottom: 10px;
-    color: #38bdf8;
+    margin: 5px;
+    font-size: 18px;
+    color: #1e3a8a;
 }
 
-/* ===== NAV ===== */
+/* NAV */
 nav {
-    display: flex;
-    justify-content: center;
-    background: #1e293b;
-    padding: 12px;
     position: sticky;
     top: 0;
+    background: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 20px;
+    z-index: 1000;
 }
 
 nav a {
-    color: white;
-    margin: 0 20px;
     text-decoration: none;
     font-weight: bold;
+    color: #111827;
 }
 
 nav a:hover {
-    color: #38bdf8;
+    color: #1d4ed8;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 section {
-    padding: 25px;
-    margin: 15px;
-    background: #1e293b;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-left: 5px solid #1d4ed8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 h2 {
+    color: #1e3a8a;
     cursor: pointer;
-    color: #38bdf8;
 }
 
+/* CONTENT */
 .content {
     display: none;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-/* ===== BUTTON ===== */
+/* BUTTON */
 button {
-    padding: 10px 20px;
+    background: #1d4ed8;
+    color: white;
+    padding: 10px 15px;
     border: none;
-    background: #38bdf8;
-    color: black;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     margin-top: 10px;
 }
 
 button:hover {
-    background: #0ea5e9;
+    background: #2563eb;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
-    background: #020617;
-    margin-top: 20px;
+    background: #e5e7eb;
+    margin-top: 30px;
 }
 
-/* ===== CHART ===== */
-canvas {
-    background: white;
-    border-radius: 10px;
-    padding: 10px;
+/* DIAGRAM */
+.diagram {
+    text-align: center;
+}
+
+svg {
+    max-width: 100%;
+    height: 250px;
 }
 </style>
 </head>
@@ -103,165 +111,161 @@ canvas {
 <body>
 
 <header>
-     <h1>Papua New Guinea University of Technology</h1>
-     <h1>Faculty of Engineering</h1>
-     <h1>School of Electrical Engineering</h1>
-     <h1>EN411- Research Project</h1>
-    <h1>Project Title:Surge Protection System for Telecommunications Application</h1>
-    <p><strong>Iso Yawi</strong></p>
-    <p>Bachelor of Engineering in Electrical Engineering (HONORS)</p>
-    <p>Supervisor: Professor Raj Kumar (PhD - Electronic Engineering)</p>
-    <p>Supervisor: Mr.Ian Pumuye | Head of Telepower- Vodafone PNG. (BEng (Electrical Engineering PNGUOT))</p>
+    <h1>Papua New Guinea University of Technology</h1>
+    <h1>School of Electrical & Communications Engineering</h1>
+    <h1>EN411 Final Year Research Project</h1>
+    <h1><b>Surge Protection System for Telecommunications Applications</b></h1>
+    <p><b>Student:</b> Iso Yawi | ID: 24301528</p>
+    <p><b>Supervisor:</b> Prof. Raj Kumar (PhD - Electronic Engineering)</p>
 </header>
 
 <nav>
     <a href="#intro">Introduction</a>
-    <a href="#objectives">Objectives</a>
-    <a href="#methodology">Methodology</a>
-    <a href="#tools">Tools</a>
-    <a href="#chart">Data</a>
-    <a href="#references">References</a>
+    <a href="#obj">Objectives</a>
+    <a href="#method">Methodology</a>
+    <a href="#diagram">System</a>
+    <a href="#data">Data</a>
+    <a href="#ref">References</a>
 </nav>
 
 <!-- INTRO -->
 <section id="intro">
-    <h2 onclick="toggleSection(this)">Introduction</h2>
-    <div class="content">
-        <p>
-        Telecommunications equipment in Papua New Guinea is frequently affected by power instability,
-        blackouts, and lightning strikes. During transitions between power sources, surge currents
-        damage sensitive components, causing failures and downtime.
-        </p>
-        <p>
-        This research focuses on improving surge protection, grounding, and earthing systems to
-        enhance equipment reliability and reduce operational risks on Telecommunications Applications.
-        </p>
-    </div>
+<h2 onclick="toggle(this)">Introduction</h2>
+<div class="content">
+<p>
+Telecommunication systems in Papua New Guinea are highly exposed to lightning, power instability,
+and generator switching surges. These disturbances damage sensitive RF and power electronics,
+causing downtime and equipment failure.
+</p>
+</div>
 </section>
 
 <!-- OBJECTIVES -->
-<section id="objectives">
-    <h2 onclick="toggleSection(this)">Research Objectives</h2>
-    <div class="content">
-        <ul>
-            <li>Mitigate equipment stalling during steady-state operation</li>
-            <li>Improve surge protection and earthing systems</li>
-            <li>Capture and analyze overcurrent events</li>
-            <li>Ensure long-term system reliability</li>
-        </ul>
-    </div>
+<section id="obj">
+<h2 onclick="toggle(this)">Objectives</h2>
+<div class="content">
+<ul>
+<li>Reduce surge damage on telecom equipment</li>
+<li>Improve grounding and earthing systems</li>
+<li>Analyze overvoltage and transient spikes</li>
+<li>Increase system lifetime reliability</li>
+</ul>
+</div>
 </section>
 
 <!-- METHODOLOGY -->
-<section id="methodology">
-    <h2 onclick="toggleSection(this)">Methodology</h2>
-    <div class="content">
-        <h3>Research Design</h3>
-        <ul>
-            <li>Laboratory testing at PNG University of Technology</li>
-            <li>Vodafone PNG site testing</li>
-            <li>Simulation using Proteus, MATLAB, Arduino</li>
-        </ul>
-
-        <h3>Data Collection</h3>
-        <ul>
-            <li>Laboratory experiments</li>
-            <li>Software simulations</li>
-            <li>On-site telecom testing</li>
-            <li>Online research databases</li>
-        </ul>
-
-        <h3>Data Analysis</h3>
-        <p>
-        Data will be used to design robust surge protection systems and improve installation practices.
-        </p>
-    </div>
+<section id="method">
+<h2 onclick="toggle(this)">Methodology</h2>
+<div class="content">
+<ul>
+<li>Laboratory testing (PNGUoT Electrical Lab)</li>
+<li>Field testing at Vodafone PNG sites</li>
+<li>Simulation (MATLAB, Proteus, Arduino)</li>
+<li>Data logging & waveform analysis</li>
+</ul>
+</div>
 </section>
 
-<!-- TOOLS -->
-<section id="tools">
-    <h2 onclick="toggleSection(this)">Tools & Equipment</h2>
-    <div class="content">
-        <h3>Tools</h3>
-        <p>Multimeter, Screwdrivers, Cable Cutter, Pliers</p>
+<!-- SYSTEM DIAGRAM -->
+<section id="diagram">
+<h2 onclick="toggle(this)">System Architecture</h2>
+<div class="content diagram">
 
-        <h3>Software</h3>
-        <p>Proteus, Arduino, MATLAB</p>
+<svg viewBox="0 0 600 250">
+<!-- Tower -->
+<line x1="100" y1="20" x2="100" y2="200" stroke="black" stroke-width="3"/>
+<line x1="60" y1="200" x2="140" y2="200" stroke="black"/>
 
-        <h3>Equipment</h3>
-        <p>ZTE Power Cabinet, 48V Batteries, Telecom Cabinets</p>
-    </div>
+<!-- Lightning -->
+<polyline points="80,20 120,60 90,60 130,110" stroke="red" stroke-width="3" fill="none"/>
+
+<!-- Cabinet -->
+<rect x="250" y="80" width="120" height="120" fill="#d1d5db" stroke="black"/>
+<text x="265" y="150" font-size="12">Telecom Cabinet</text>
+
+<!-- Ground -->
+<line x1="100" y1="200" x2="100" y2="240" stroke="green" stroke-width="4"/>
+<line x1="80" y1="240" x2="120" y2="240" stroke="green"/>
+
+<!-- Surge arrow -->
+<line x1="120" y1="80" x2="250" y2="120" stroke="orange" stroke-width="3"/>
+</svg>
+
+<p>Lightning → Surge Entry → Cabinet Damage → Grounding System Protection</p>
+</div>
 </section>
 
-<!-- CHART -->
-<section id="chart">
-    <h2 onclick="toggleSection(this)">Sample Surge Data</h2>
-    <div class="content">
-        <canvas id="myChart"></canvas>
-        <button onclick="generateData()">Generate New Data</button>
-    </div>
+<!-- DATA -->
+<section id="data">
+<h2 onclick="toggle(this)">Surge Waveform Analysis</h2>
+<div class="content">
+
+<canvas id="chart"></canvas>
+
+<button onclick="generate()">Generate Surge Event</button>
+<button onclick="downloadPDF()">Download Report (PDF)</button>
+
+</div>
 </section>
 
 <!-- REFERENCES -->
-<section id="references">
-    <h2 onclick="toggleSection(this)">References</h2>
-    <div class="content">
-        <ul>
-            <li><a href="https://ieeexplore.ieee.org" target="_blank">IEEE Xplore</a></li>
-            <li><a href="https://www.researchgate.net" target="_blank">ResearchGate</a></li>
-        </ul>
-    </div>
+<section id="ref">
+<h2 onclick="toggle(this)">References</h2>
+<div class="content">
+<ul>
+<li>IEEE Xplore Digital Library</li>
+<li>ResearchGate Engineering Papers</li>
+<li>MATLAB Electrical Systems Modeling</li>
+<li>Proteus Simulation Environment</li>
+</ul>
+</div>
 </section>
 
 <footer>
-    <p>© 2026 Iso Yawi | PNG University of Technology</p>
+© 2026 PNG University of Technology | Electrical Engineering Final Year Project
 </footer>
 
-<!-- JS + CHART -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
-// TOGGLE SECTIONS
-function toggleSection(element) {
-    const content = element.nextElementSibling;
-    content.style.display = (content.style.display === "block") ? "none" : "block";
+// toggle sections
+function toggle(el){
+    let c = el.nextElementSibling;
+    c.style.display = c.style.display === "block" ? "none" : "block";
 }
 
-// SMOOTH SCROLL
-document.querySelectorAll("nav a").forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href"))
-            .scrollIntoView({ behavior: "smooth" });
-    });
-});
-
-// CHART
+// chart
 let chart;
 
-function generateData() {
-    const data = Array.from({length: 10}, () => Math.floor(Math.random() * 100));
+function generate(){
+    let base = Array.from({length:10}, ()=> Math.random()*20 + 40);
 
-    if (chart) chart.destroy();
+    // inject surge spike
+    base[5] = 120 + Math.random()*50;
 
-    const ctx = document.getElementById('myChart').getContext('2d');
+    if(chart) chart.destroy();
 
-    chart = new Chart(ctx, {
-        type: 'line',
+    chart = new Chart(document.getElementById("chart"), {
+        type: "line",
         data: {
-            labels: ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"],
-            datasets: [{
-                label: "Surge Voltage (V)",
-                data: data,
-                fill: false,
-                tension: 0.3
+            labels:["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"],
+            datasets:[{
+                label:"Voltage (V)",
+                data: base,
+                borderColor:"#1d4ed8",
+                fill:false,
+                tension:0.3
             }]
         }
     });
 }
 
-// AUTO LOAD DATA
-generateData();
+generate();
+
+// simple PDF export
+function downloadPDF(){
+    const w = window.open();
+    w.document.write(document.body.innerHTML);
+    w.print();
+}
 </script>
 
 </body>
