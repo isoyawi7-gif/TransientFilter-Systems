@@ -76,14 +76,19 @@ nav a:hover {
 section {
     padding: 25px;
     margin: 15px;
-    background: #1e293b;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
 
-h2 {
-    cursor: pointer;
-    color: #38bdf8;
+    /* >>> CHANGE THIS (glass transparent effect) */
+    background: rgba(30, 41, 59, 0.4);  /* transparency */
+
+    /* >>> ADD THIS (glass blur effect) */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* >>> ADD THIS (glass border for realism) */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 .content {
