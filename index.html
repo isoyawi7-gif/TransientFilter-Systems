@@ -197,6 +197,48 @@ nav a {
     nav.active {
         display: flex;
     }
+    /* Vocabulary */
+    #vocabulary {
+    padding: 20px;
+}
+
+#vocabTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#vocabTable th, #vocabTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+#vocabTable th {
+    background-color: #0f172a;
+    color: #38bdf8;
+}
+
+#vocabTable tr:nth-child(even) {
+    background-color: #1e293b;
+}
+
+#vocabTable tr:hover {
+    background-color: #334155;
+}
+
+/* Input styling */
+input {
+    padding: 8px;
+    margin: 5px;
+}
+
+button {
+    padding: 8px 12px;
+    background: #38bdf8;
+    border: none;
+    cursor: pointer;
+}
 
 
     /* FOOTER */
@@ -244,6 +286,7 @@ nav a {
     <a href="#chart">Data</a>
     <a href="#references">References</a>
     <a href="#references">Project Time Line</a>
+      <a href="#references">Vocabulary</a>
 </nav>
 
 <!-- INTRO -->
@@ -438,6 +481,27 @@ nav a {
         </div>
     </section>
 
+    <section id="vocabulary">
+    <h2>Vocabulary</h2>
+
+    <!-- Input Area -->
+    <input type="text" id="word" placeholder="Enter word">
+    <input type="text" id="meaning" placeholder="Enter meaning">
+    <button onclick="addWord()">Add</button>
+
+    <!-- Table -->
+    <table id="vocabTable">
+        <thead>
+            <tr>
+                <th>Word</th>
+                <th>Meaning</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+
     <!--CONTACT-->
     <section>
     <a href="mailto:24301528isya@student.pnguot.ac.pg" class="contact-btn">Contact Me</a>
@@ -447,7 +511,7 @@ nav a {
     <p>© 2026 Iso Yawi | School of Electrical Engineering | PNG University of Technology |</p>
 </footer>
 
-<!-- JS + CHART -->
+<!-- --------------------------JS + CHART ------------------------------------------->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -474,6 +538,50 @@ generateData();
 function toggleMenu() {
     document.querySelector("nav").classList.toggle("active");
 }
+
+// Vocabulary 
+
+        <script>
+let vocabulary = [];
+
+function addWord() {
+    let word = document.getElementById("word").value;
+    let meaning = document.getElementById("meaning").value;
+
+    if (word === "" || meaning === "") {
+        alert("Please enter both word and meaning");
+        return;
+    }
+
+    // Add to array
+    vocabulary.push({ word, meaning });
+
+    // Sort alphabetically (case insensitive)
+    vocabulary.sort((a, b) => 
+        a.word.toLowerCase().localeCompare(b.word.toLowerCase())
+    );
+
+    // Refresh table
+    displayTable();
+
+    // Clear inputs
+    document.getElementById("word").value = "";
+    document.getElementById("meaning").value = "";
+}
+
+function displayTable() {
+    let tableBody = document.querySelector("#vocabTable tbody");
+    tableBody.innerHTML = "";
+
+    vocabulary.forEach(item => {
+        let row = `<tr>
+            <td>${item.word}</td>
+            <td>${item.meaning}</td>
+        </tr>`;
+        tableBody.innerHTML += row;
+    });
+}
+</script>
 </script>
 
 </body>
