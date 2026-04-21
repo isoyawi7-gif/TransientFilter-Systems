@@ -197,50 +197,7 @@ nav a {
     nav.active {
         display: flex;
     }
-    /* Vocabulary */
-    #vocabulary {
-    padding: 20px;
-}
-
-#vocabTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-#vocabTable th, #vocabTable td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-}
-
-#vocabTable th {
-    background-color: #0f172a;
-    color: #38bdf8;
-}
-
-#vocabTable tr:nth-child(even) {
-    background-color: #1e293b;
-}
-
-#vocabTable tr:hover {
-    background-color: #334155;
-}
-
-/* Input styling */
-input {
-    padding: 8px;
-    margin: 5px;
-}
-
-button {
-    padding: 8px 12px;
-    background: #38bdf8;
-    border: none;
-    cursor: pointer;
-}
-
-
+ 
     /* FOOTER */
     footer {
         font-size: 12px;
@@ -539,47 +496,6 @@ function toggleMenu() {
     document.querySelector("nav").classList.toggle("active");
 }
 
-// Vocabulary 
-
-let vocabulary = [];
-
-function addWord() {
-    let word = document.getElementById("word").value;
-    let meaning = document.getElementById("meaning").value;
-
-    if (word === "" || meaning === "") {
-        alert("Please enter both word and meaning");
-        return;
-    }
-
-    // Add to array
-    vocabulary.push({ word, meaning });
-
-    // Sort alphabetically (case insensitive)
-    vocabulary.sort((a, b) => 
-        a.word.toLowerCase().localeCompare(b.word.toLowerCase())
-    );
-
-    // Refresh table
-    displayTable();
-
-    // Clear inputs
-    document.getElementById("word").value = "";
-    document.getElementById("meaning").value = "";
-}
-
-function displayTable() {
-    let tableBody = document.querySelector("#vocabTable tbody");
-    tableBody.innerHTML = "";
-
-    vocabulary.forEach(item => {
-        let row = `<tr>
-            <td>${item.word}</td>
-            <td>${item.meaning}</td>
-        </tr>`;
-        tableBody.innerHTML += row;
-    });
-}
 </script>
 
 </body>
