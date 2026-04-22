@@ -494,6 +494,26 @@ nav a {
     <a href="mailto:24301528isya@student.pnguot.ac.pg" class="contact-btn">Contact Me</a>
     </section>
 
+<!--DONATE-->
+    <section class="content">
+  <h2>Support Us ❤️</h2>
+  <p>Your donation helps us continue our work.</p>
+
+  <button class="donate-btn" onclick="showDetails()">Donate via BSP</button>
+
+  <div class="bank-details" id="bankDetails">
+    <strong>Bank:</strong> Bank South Pacific (BSP)<br>
+    <strong>Account Name:</strong> Your Name<br>
+    <strong>Account Number:</strong> <span id="accountNumber">123456789</span><br>
+    <strong>Branch:</strong> Lae Branch<br>
+
+    <button class="copy-btn" onclick="copyAccount()">Copy Account Number</button>
+    <div class="copied" id="copiedMsg">Copied!</div>
+  </div>
+</section>
+
+<style>
+
 <footer>
     <p>© 2026 Iso Yawi | School of Electrical Engineering | PNG University of Technology |</p>
 </footer>
@@ -524,6 +544,20 @@ generateData();
     <script>
 function toggleMenu() {
     document.querySelector("nav").classList.toggle("active");
+}
+
+    // DONATE
+    function showDetails() {
+  document.getElementById("bankDetails").style.display = "block";
+}
+
+function copyAccount() {
+  const acc = document.getElementById("accountNumber").innerText;
+  navigator.clipboard.writeText(acc).then(() => {
+    const msg = document.getElementById("copiedMsg");
+    msg.style.display = "block";
+    setTimeout(() => msg.style.display = "none", 2000);
+  });
 }
 
 </script>
