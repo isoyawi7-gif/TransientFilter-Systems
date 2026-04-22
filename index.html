@@ -243,9 +243,8 @@ nav a {
     <a href="#chart">Data</a>
     <a href="#references">References</a>
     <a href="#rprojecttimeline">Project Time Line</a>
-      <a href="#vocabulary">Vocabulary</a>
-    <a href="#contact me">Contact Me</a>
-    <a href="#supportus">Support Us</a>
+    <a href="#vocabulary">Vocabulary</a>
+  
                                           
 </nav>
 
@@ -497,25 +496,6 @@ nav a {
     <a href="mailto:24301528isya@student.pnguot.ac.pg" class="contact-btn">Contact Me</a>
     </section>
 
-<!--DONATE-->
-<section id="Support Us">
-         <h2 onclick="toggleSection(this)">Support Us</h2>
-        <div class="content">
-  <h2>Support Us ❤️</h2>
-  <p>Your donation helps us continue our work.</p>
-
-  <button class="donate-btn" onclick="showDetails()">Donate via BSP</button>
-
-  <div class="bank-details" id="bankDetails">
-    <strong>Bank:</strong> Bank South Pacific (BSP)<br>
-    <strong>Account Name:</strong> Iso Yawi<br>
-    <strong>Account Number:</strong> <span id="accountNumber">7004945700</span><br>
-    <strong>Branch:</strong> Lae Top Town Branch<br> BSB Code: 088-303<br>
-
-    <button class="copy-btn" onclick="copyAccount()">Copy Account Number</button>
-    <div class="copied" id="copiedMsg">Copied!</div>
-  </div>
-</section>
 
 <style>
 
@@ -551,19 +531,6 @@ function toggleMenu() {
     document.querySelector("nav").classList.toggle("active");
 }
 
-    // DONATE
-    function showDetails() {
-  document.getElementById("bankDetails").style.display = "block";
-}
-
-function copyAccount() {
-  const acc = document.getElementById("accountNumber").innerText;
-  navigator.clipboard.writeText(acc).then(() => {
-    const msg = document.getElementById("copiedMsg");
-    msg.style.display = "block";
-    setTimeout(() => msg.style.display = "none", 2000);
-  });
-}
 
 </script>
 
