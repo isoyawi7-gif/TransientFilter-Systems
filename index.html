@@ -493,7 +493,8 @@ nav a {
     <section>
     <a href="mailto:24301528isya@student.pnguot.ac.pg" class="contact-btn">Contact Me</a>
     </section>
-
+  </ul>
+    </div>
 
 <style>
 
@@ -502,33 +503,56 @@ nav a {
 </footer>
 
 <!-- --------------------------JS + CHART ------------------------------------------->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-// TOGGLE SECTIONS
-function toggleSection(element) {
-    const content = element.nextElementSibling;
-    content.style.display = (content.style.display === "block") ? "none" : "block";
-}
+// WAIT UNTIL DOM IS READY
+document.addEventListener("DOMContentLoaded", function () {
 
-// SMOOTH SCROLL
-document.querySelectorAll("nav a").forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href"))
-            .scrollIntoView({ behavior: "smooth" });
+    // TOGGLE SECTIONS
+    window.toggleSection = function(element) {
+        const content = element.nextElementSibling;
+        if (!content) return;
+
+        content.style.display =
+            (content.style.display === "block") ? "none" : "block";
+    };
+
+    // SMOOTH SCROLL (SAFE)
+    document.querySelectorAll("nav a").forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            const targetId = this.getAttribute("href");
+
+            // ignore invalid links
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        });
     });
+
+    // SAFE DATA LOAD (prevents crash)
+    if (typeof generateData === "function") {
+        generateData();
+    }
+
+    // MENU TOGGLE
+    window.toggleMenu = function() {
+        const nav = document.querySelector("nav");
+        if (nav) {
+            nav.classList.toggle("active");
+        }
+    };
+
 });
-
-// AUTO LOAD DATA
-generateData();
-
-function toggleMenu() {
-    document.querySelector("nav").classList.toggle("active");
-}
-
-
 </script>
+
+
 
 </body>
 </html>
