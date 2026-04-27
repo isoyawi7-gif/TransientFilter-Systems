@@ -116,11 +116,19 @@ footer {
 <body>
 
 <header>
-    <h1>Papua New Guinea University of Technology</h1>
+      <h1>Papua New Guinea University of Technology</h1>
     <h2>Faculty of Engineering</h2>
-    <h2>EN411 Research Project A</h2>
-    <h2>Surge Protection System Design</h2>
-    <p><strong>Iso Yawi</strong></p>
+    <h2>School of Electrical and Communications Engineering</h2>
+    <h2>EN411- Research Project A</h2>
+    <h2>Research Topic:Design of Surge Protection System for Telecommunication Applications.</h2>
+    <p>Bachelor of Engineering in Electrical Engineering (HONORS).</p>
+    <p>Academic Project Supervisor: Professor Raj Kumar (PhD - Electronic Engineering).</p>
+    <p>1) Industry Project Supervisor: Mr. Ian Pumuye (BEng- Electrical Engineering -PNGUOT) | Head of Telepower- Vodafone PNG.</p>
+    <p>2) Industry Project Supervisor: Mr. Newman Lyaki (BEng- Electrical Engineering -PNGUOT) | Team Leader Highlands Region| Senior Power Projects 
+        Engineer- Telikom LTD.| Managing Director -LANGA ENGINEERING AND CONSTRUCTION LIMITED.</p>
+
+    <h2>Research ID: RPEE26-PRKu-04 </h2> 
+    <h2><strong>Iso Yawi</strong> </h2>
 </header>
 
 <button onclick="toggleMenu()">☰ Menu</button>
@@ -136,13 +144,23 @@ footer {
     <a href="#references">References</a>
     <a href="#timeline">Timeline</a>
     <a href="#vocabulary">Vocabulary</a>
+    <a href="#prosupervisors">Project Supervisors</a>
 </nav>
 
 <!-- INTRO -->
 <section id="intro">
     <h2 onclick="toggleSection(this)">Introduction</h2>
     <div class="content">
-        <p>Telecom systems in PNG face power instability and lightning surges causing failures.</p>
+         <p>
+        Telecommunications applications in Papua New Guinea is frequently affected by power instability,
+        blackouts, and lightning strikes. During transitions between power sources, surge currents
+        damage sensitive components, causing failures and downtime.
+        </p>
+        <p>
+        This research focuses on improving surge protection, grounding, and earthing systems to
+        enhance applications reliability and reduce operational risks.
+        </p>
+
     </div>
 </section>
 
@@ -150,7 +168,26 @@ footer {
 <section id="problemstatement">
     <h2 onclick="toggleSection(this)">Problem Statement</h2>
     <div class="content">
-        <p>Surge events damage telecom equipment due to poor protection systems.</p>
+        <p>
+        Telecommunication base station applications are highly
+        vulnerable to electrical surges caused by lightning strikes,
+        unstable grid supply, and switching transients. In many installations,
+        especially in regions with high lightning activity and unreliable power infrastructure, 
+        existing surge protection systems are either inadequate, poorly designed, or improperly maintained.
+        </p>
+        <p>
+        As a result, these surges lead to frequent equipment failures, 
+        increased operational downtime, and high maintenance and replacement costs. 
+         Despite the availability of surge protection devices, there is limited localized research on their 
+        effectiveness under real operating conditions and how they can be optimized for improved protection.
+        </p>
+
+        <p>
+            Therefore, there is a need to investigate the causes and impact of electrical surges on telecommunications applications
+            and to develop a more reliable and efficient surge protection and filter approach suitable for such environments.
+        </p>
+            <br>
+
     </div>
 </section>
 
@@ -158,7 +195,37 @@ footer {
 <section id="researchquestion">
     <h2 onclick="toggleSection(this)">Research Questions</h2>
     <div class="content">
-        <p>How can surge protection systems be improved in PNG telecom sites?</p>
+          <p>The Research question:</p>
+<p>1.	How can surge protection, earthing, and grounding systems be optimized to 
+    improve the reliability and operational stability of telecommunication equipment under power
+    fluctuations and lightning-induced surges? </p>
+
+<p>2.	What are the effects of power transitions (main supply to generator) 
+    on telecommunication equipment, and how do these transitions contribute to surge-related failures? </p>
+
+<p>3.	How effective are existing surge protection devices (SPDs) in
+    telecommunication sites in mitigating overvoltage and overcurrent conditions? </p>
+
+
+<p>4.	How does the quality of earthing and grounding systems influence the dissipation
+    of surge energy in telecommunications infrastructure? </p>
+
+
+<p>5.	What is the impact of lightning-induced surges on telecom equipment, 
+    and how can protection
+    systems be enhanced to withstand these events? </p>
+
+<p>6.	How can overcurrent events be captured, recorded, and analyzed to 
+    improve surge protection system design? </p>
+
+<p>7.	To what extent does improved surge protection and grounding increase
+    the lifespan and reliability of telecommunication equipment? </p>
+
+
+<p>8.	What practical surge protection and grounding design framework can be developed 
+    for telecom sites in high-risk environments like Papua New Guinea?</p>
+     </div>
+
     </div>
 </section>
 
@@ -166,10 +233,36 @@ footer {
 <section id="objectives">
     <h2 onclick="toggleSection(this)">Objectives</h2>
     <div class="content">
+        <p>This research is guided by the following key objectives;</p>
         <ul>
-            <li>Improve surge protection systems</li>
-            <li>Reduce equipment failure</li>
-        </ul>
+            <li> 1) Improved understanding of how power surges, generator changeovers, and lightning events 
+                affect telecommunication equipment performance and reliability. .</li>
+            
+            <li>  2) Identification of weaknesses in existing surge protection, earthing, 
+                and grounding systems used in telecommunication sites. </li>
+            
+            <li> 3)Development of improved surge protection and grounding design
+                solutions suitable for unstable power environments. </li>
+            
+            <li> 4)Establishment of effective methods for
+                monitoring and recording overcurrent events for analysis 
+                and future system improvements.</li>
+            
+            <li> 5)Reduction in equipment failures such as overheating, circuit damage, and unexpected 
+                shutdowns caused by electrical surges.</li>
+
+
+            <li> 6)Enhanced reliability and stability of telecommunication systems, 
+                leading to reduced downtime and maintenance costs.</li>
+            
+            <li> 7) Extension of the operational lifespan of critical telecommunication equipment.</li>
+                                                                                                      
+            <li> 8)Development of practical installation and maintenance guidelines for telecom operators
+                to implement improved protection systems.</li>
+            
+            <li>9)Contribution to existing knowledge by providing field-based research data relevant
+                to developing countries with unstable power infrastructure, such as Papua New Guinea. </li>
+
     </div>
 </section>
 
@@ -177,7 +270,26 @@ footer {
 <section id="methodology">
     <h2 onclick="toggleSection(this)">Methodology</h2>
     <div class="content">
-        <p>Lab testing, simulation, and field data collection.</p>
+ <h3>Research Design</h3>
+        <ul>
+            <li>Laboratory testing at PNG University of Technology.</li>
+            <li>Vodafone PNG site testing.</li>
+            <li>Simulation using Proteus, MATLAB, Arduino UNO.</li>
+        </ul>
+
+        <h3>Data Collection</h3>
+        <ul>
+            <li>Laboratory experiments.</li>
+            <li>Software simulations.</li>
+            <li>On-site telecom testing.</li>
+            <li>Online research databases.</li>
+        </ul>
+
+        <h3>Data Analysis</h3>
+        <p>
+        Data will be used to design robust surge protection systems and improve installation practices.
+        </p>
+
     </div>
 </section>
 
@@ -185,7 +297,15 @@ footer {
 <section id="tools">
     <h2 onclick="toggleSection(this)">Tools</h2>
     <div class="content">
-        <p>Multimeter, MATLAB, Proteus, Arduino</p>
+      <h3>Tools</h3>
+        <p>Multimeter, Screwdrivers, Cable Cutter, Pliers.</p>
+
+        <h3>Software</h3>
+        <p>Proteus, Arduino, MATLAB.</p>
+
+        <h3>Equipment</h3>
+        <p>ZTE Power Cabinet, 48V Batteries, Telecom Cabinets.</p>
+
     </div>
 </section>
 
@@ -205,10 +325,23 @@ footer {
 <section id="references">
     <h2 onclick="toggleSection(this)">References</h2>
     <div class="content">
-        <ul>
-            <li>IEEE Xplore</li>
-            <li>ResearchGate</li>
+<ul>
+            <li><a href="https://ieeexplore.ieee.org" target="_blank">IEEE Xplore</a></li>
+            <li><a href="https://www.researchgate.net" target="_blank"></a>ResearchGate</a></li>
+             <li><a href=""_blank"></a>[1] Quyen Huy Anh and Le Quang Trung, 
+                 “Surge Protection on Power Line for Typical Telecommunication Sites in Vietnam,” 
+                 International Journal of Engineering Research & Technology 
+                 (IJERT), vol. 8, no. 3, pp. 5–9, Mar. 2019. Available: http://www.ijert.org</a></li>
+            
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9017591/?" target="_blank">[2]Z. Zhao, S. Wang, and Y. Cui, “Research on protection performance of
+                surge protective devices against electromagnetic pulse,” Applied Bionics and Biomechanics, vol. 2022,
+                Art. no. 7194855, Apr. 2022, doi: 10.1155/2022/7194855, retracted 2023.</a></li>
+
+            <li><a href="https://www.researchgate.net/publication/391472441_Safe_Guarding_Industrial_Equipment_Against_Electrical_Surges"target=" _blank">[3]K. Boopathy and T. Kumar G, “Safe guarding industrial
+                equipment against electrical surges,” International Research Journal on Advanced Engineering Hub (IRJAEH),
+                vol. 3, no. 3, pp. 1035–1041, Mar. 2025, doi: 10.47392/IRJAEH.2025.0147.</a></li>
         </ul>
+    
     </div>
 </section>
 
@@ -218,8 +351,11 @@ footer {
     <div class="content">
         <ul>
             <li>Week 1 - Topic Selection</li>
-            <li>Week 2 - Proposal</li>
-            <li>Week 3-4 - Literature Review</li>
+            <li>Week 2 - Supervisor Meeting</li>
+            <li>Week 3-4 - Reading and Planning</li>
+            <li>Week 5- Research Proposal Submission</li>
+            <li>Week 6- 8 - (i) Literature Review <br> (ii) Research Design and Methodology Setup </li>
+            <li> Week 9- Data Collection</li>
         </ul>
     </div>
 </section>
@@ -232,13 +368,34 @@ footer {
     </div>
 </section>
 
+<!-- VOCAB -->
+<section id="vocabulary">
+    <h2 onclick="toggleSection(this)">Vocabulary</h2>
+    <div class="content">
+        <p>Surge, Voltage, Current, SPD, Earthing</p>
+    </div>
+</section>
+
+<!-- PROJECT SUPERVISORS -->
+<section id="prosupervisors">
+    <h2 onclick="toggleSection(this)">Data Simulation</h2>
+
+    <div class="content data-sim">
+    <p>Academic Project Supervisor: Professor Raj Kumar (PhD - Electronic Engineering).</p>
+    <p>1) Industry Project Supervisor: Mr. Ian Pumuye (BEng- Electrical Engineering -PNGUOT) | Head of Telepower- Vodafone PNG.</p>
+    <p>2) Industry Project Supervisor: Mr. Newman Lyaki (BEng- Electrical Engineering -PNGUOT) | Team Leader Highlands Region| Senior Power Projects 
+        Engineer- Telikom LTD.| Managing Director -LANGA ENGINEERING AND CONSTRUCTION LIMITED.</p>
+</
+    </div>
+</section>
+
 <!-- CONTACT -->
 <section>
     <a href="mailto:24301528isya@student.pnguot.ac.pg">Contact Me</a>
 </section>
 
 <footer>
-    <p>© 2026 Iso Yawi | PNGUOT</p>
+    <p>© 2026 Iso Yawi| School of Electrical and Communications Engineering| | PNGUOT</p>
 </footer>
 
 <script>
