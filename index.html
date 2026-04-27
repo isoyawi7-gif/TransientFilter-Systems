@@ -24,115 +24,93 @@ header {
     text-align: center;
     padding: 30px;
     background: #020617;
-}
-
-/* ===== NAV ===== */
-.menu-toggle {
-    display: none;
-    width: 100%;
-    padding: 10px;
-    background: #1e293b;
-    color: white;
-    border: none;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    background: #1e293b;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
+    color: #38bdf8;
 }
 
 /* ===== SECTION ===== */
 section {
     padding: 20px;
-    margin: 10px;
+    margin: 15px;
     background: rgba(30,41,59,0.5);
     backdrop-filter: blur(10px);
     border-radius: 10px;
 }
 
+/* ===== CONTENT ===== */
 .content {
     display: none;
 }
 
-/* ===== SIMULATION ===== */
-.system {
-    display: flex;
-    flex-wrap: wrap;   /* FIX MOBILE */
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+/* ===== DATA SYSTEM ===== */
+.system{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-top:30px;
+    align-items:center;
+    flex-wrap:wrap;
 }
 
-.block {
-    width: 150px;
-    padding: 10px;
-    background: white;
-    color: black;
-    text-align: center;
-    border-radius: 8px;
-    font-weight: bold;
+.block{
+    width:170px;
+    padding:15px;
+    border:2px solid black;
+    background:white;
+    color:black;
+    font-weight:bold;
+    text-align:center;
+    border-radius:8px;
 }
 
-.line {
-    width: 60px;
-    height: 6px;
-    background: #bbb;
+.line{
+    width:90px;
+    height:8px;
+    background:#bbb;
+    position:relative;
 }
 
-.vertical {
-    width: 6px;
-    height: 60px;
+.vertical{
+    width:8px;
+    height:80px;
 }
 
-.branch {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.branch{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-.controls {
-    text-align: center;
-    margin-top: 20px;
+/* ===== CONTROLS ===== */
+.controls{
+    margin-top:25px;
+    text-align:center;
 }
 
-button {
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    background: #38bdf8;
-    cursor: pointer;
+button{
+    padding:10px;
+    margin:5px;
+    border:none;
+    background:#38bdf8;
+    cursor:pointer;
+}
+
+.slider{
+    width:200px;
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
 
-    nav {
-        display: none;
-        flex-direction: column;
+    .system{
+        flex-direction:column;
     }
 
-    nav.active {
-        display: flex;
+    .line{
+        display:none;
     }
 
-    .menu-toggle {
-        display: block;
-    }
-
-    .block {
-        width: 100%;   /* FULL WIDTH ON MOBILE */
-    }
-
-    .line {
-        display: none; /* hide lines on small screen */
+    .block{
+        width:90%;
     }
 }
 
@@ -142,45 +120,75 @@ button {
 <body>
 
 <header>
-<h1>Surge Protection System</h1>
-<p>Telecom Power Simulation</p>
+<h1>Telecom Power System Simulation</h1>
+<p>Surge Protection Research</p>
 </header>
 
-<button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-
-<nav>
-<a href="#data">Simulation</a>
-</nav>
-
-<!-- DATA SIMULATION -->
+<!-- DATA -->
 <section id="data">
 <h2 onclick="toggleSection(this)">Data Simulation</h2>
 
-<div class="content">
+<div class="content" style="display:block;">
+
+<h3 style="text-align:center;">Telecom Power Simulator</h3>
+
+<p style="text-align:center;">
+Simulation of Vodafone PNG telecom power system
+</p>
 
 <div class="system">
 
-<div class="block">AC GRID<br><span id="gridV">240V</span></div>
+  <div class="block">
+      AC GRID<br>
+      Voltage: <span id="gridV">240V</span>
+  </div>
 
-<div class="block">RECTIFIER</div>
+  <div class="line"></div>
 
-<div class="block">DC BUS<br>-48V</div>
+  <div class="block">
+      RECTIFIER<br>
+      AC → DC
+  </div>
 
-<div class="branch">
-<div class="block">BATTERY<br><span id="soc">80%</span></div>
-</div>
+  <div class="line"></div>
 
-<div class="branch">
-<div class="block">LOAD<br><span id="loadCurrent">20A</span></div>
-</div>
+  <div class="block">
+      DC BUS<br>
+      -48V
+  </div>
+
+  <div class="branch">
+    <div class="line vertical"></div>
+    <div class="block">
+        BATTERY<br>
+        SOC: <span id="soc">80.0</span>%
+    </div>
+  </div>
+
+  <div class="branch">
+    <div class="line vertical"></div>
+    <div class="block">
+        LOAD<br>
+        Current: <span id="loadCurrent">20</span>A
+    </div>
+  </div>
 
 </div>
 
 <div class="controls">
-<button onclick="toggleGrid()">Toggle Grid</button>
-<br>
-Load:
-<input type="range" min="5" max="100" value="20" id="loadSlider">
+<button onclick="toggleGrid()">Toggle Grid</button><br>
+<button onclick="manualStart()">START Genset</button>
+<button onclick="manualStop()">STOP Genset</button>
+
+<br><br>
+
+Load Simulation<br>
+<input type="range" min="5" max="120" value="20" class="slider" id="loadSlider">
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+Grid: <span id="gridStatus">ON</span> |
+Genset: <span id="genStatus">OFF</span>
 </div>
 
 </div>
@@ -188,36 +196,52 @@ Load:
 
 <script>
 
-/* ===== UI ===== */
+/* ===== TOGGLE SECTION ===== */
 function toggleSection(el){
-    const c = el.nextElementSibling;
-    c.style.display = c.style.display === "block" ? "none" : "block";
-}
-
-function toggleMenu(){
-    document.querySelector("nav").classList.toggle("active");
+    const content = el.nextElementSibling;
+    content.style.display = content.style.display === "block" ? "none" : "block";
 }
 
 /* ===== SIMULATION ===== */
 let grid = true;
+let genset = false;
 let soc = 80;
 let load = 20;
 
+/* SLIDER */
 document.getElementById("loadSlider").oninput = function(){
     load = this.value;
-    document.getElementById("loadCurrent").innerText = load + "A";
+    document.getElementById("loadCurrent").innerText = load;
 }
 
+/* GRID */
 function toggleGrid(){
     grid = !grid;
+    document.getElementById("gridStatus").innerText = grid ? "ON" : "OFF";
 }
 
+/* GENSET */
+function manualStart(){
+    genset = true;
+    document.getElementById("genStatus").innerText = "ON";
+}
+
+function manualStop(){
+    genset = false;
+    document.getElementById("genStatus").innerText = "OFF";
+}
+
+/* MAIN LOOP */
 setInterval(()=>{
-    
+
     if(grid){
         soc += 0.2;
     } else {
         soc -= 0.3;
+    }
+
+    if(genset){
+        soc += 0.25;
     }
 
     soc -= load * 0.002;
@@ -225,7 +249,7 @@ setInterval(()=>{
     if(soc > 100) soc = 100;
     if(soc < 0) soc = 0;
 
-    document.getElementById("soc").innerText = soc.toFixed(1) + "%";
+    document.getElementById("soc").innerText = soc.toFixed(1);
     document.getElementById("gridV").innerText = grid ? "240V" : "0V";
 
 },200);
