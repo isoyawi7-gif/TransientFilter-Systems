@@ -4,425 +4,261 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Surge Protection Research - Iso Yawi</title>
+<title>Telecom Power Simulation</title>
 
 <style>
+
 /* ===== GLOBAL ===== */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     margin: 0;
-    
-     /* >>> ADD YOUR BACKGROUND IMAGE HERE */
-    background: 
-        linear-gradient(rgba(2,6,23,0.8), rgba(15,23,42,0.9)), /* overlay for readability */
-        url("logos.png"); /* your image name */
-
-    background-size: cover;        /* makes image fill screen */
-    background-position: center;   /* centers image */
-    background-repeat: no-repeat;  /* prevents repeating */
-    background-attachment: fixed; /* creates nice scroll effect */
+    text-align: center;
     color: white;
+
+    background:
+        linear-gradient(rgba(2,6,23,0.8), rgba(15,23,42,0.9)),
+        url("logos.png");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* ===== HEADER ===== */
 header {
-    text-align: center;
-    color: #38bdf8;
-    padding: 40px 20px;
+    padding: 30px;
     background: #020617;
     border-bottom: 2px solid #38bdf8;
 }
 
 header h1 {
-    margin-bottom: 10px;
     color: #38bdf8;
 }
 
-/* ===== NAV ===== */
-nav {
+/* ===== SYSTEM LAYOUT ===== */
+.system {
     display: flex;
     justify-content: center;
-    background: #1e293b;
-    padding: 12px;
-    position: sticky;
-    top: 0;
+    gap: 25px;
+    margin-top: 40px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-nav a {
-    color: white;
-    margin: 0 20px;
-    text-decoration: none;
+.block {
+    width: 170px;
+    padding: 15px;
+    border: 2px solid #38bdf8;
+    background: rgba(255,255,255,0.1);
     font-weight: bold;
+    border-radius: 10px;
 }
 
-nav a:hover {
+/* ===== LINES ===== */
+.line {
+    width: 90px;
+    height: 8px;
+    background: #bbb;
+    position: relative;
+    overflow: hidden;
+}
+
+.vertical {
+    width: 8px;
+    height: 80px;
+}
+
+/* ===== CURRENT FLOW ===== */
+.current, .currentV {
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* ===== INDICATOR ===== */
+.indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 5px;
+    background: red;
+    border: 2px solid black;
+}
+
+/* ===== CONTROLS ===== */
+.controls {
+    margin-top: 30px;
+}
+
+button, select {
+    padding: 10px 15px;
+    margin: 8px;
+    cursor: pointer;
+}
+
+.slider {
+    width: 220px;
+}
+
+/* ===== LINK ===== */
+a {
     color: #38bdf8;
 }
 
-
-    /* ===== CONTACT ===== */
-    .contact-btn {
-    padding: 8px 15px;
-    background: #2563eb;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.contact-btn:hover {
-    background: #1d4ed8;
-}
-
-/* ===== SECTIONS ===== */
-section {
-    padding: 25px;
-    margin: 15px;
-
-    /* >>> CHANGE THIS (glass transparent effect) */
-    background: rgba(30, 41, 59, 0.4);  /* transparency */
-
-    /* >>> ADD THIS (glass blur effect) */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    /* >>> ADD THIS (glass border for realism) */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-
-.content {
-    display: none;
-    margin-top: 15px;
-}
-
-/* ===== BUTTON ===== */
-button {
-    padding: 10px 20px;
-    border: none;
-    background: #38bdf8;
-    color: black;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background: #0ea5e9;
-}
-
-/* ===== FOOTER ===== */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #020617;
-    margin-top: 20px;
-}
-
-/* ===== CHART ===== */
-canvas {
-    background: white;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-  /* ===== DESKTOP DEFAULT ===== */
-.menu-toggle {
-    display: none;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-nav a {
-    display: inline-block;
-}
-
-/* ===== DATA ===== */
-    {font-family:Arial; background:#f4f4f4; text-align:center;}
-.system{display:flex; justify-content:center; gap:25px; margin-top:40px; align-items:center;}
-.block{width:170px; padding:15px; border:2px solid black; background:white; font-weight:bold;}
-.line{width:90px; height:8px; background:#bbb; position:relative; overflow:hidden;}
-.vertical{width:8px; height:80px;}
-.branch{display:flex; flex-direction:column; align-items:center;}
-.current{width:10px; height:10px; background:red; border-radius:50%; position:absolute;}
-.currentV{width:10px; height:10px; background:red; border-radius:50%; position:absolute;}
-.indicator{width:20px; height:20px; border-radius:50%; margin:auto; margin-top:5px; background:red; border:2px solid black;}
-.controls{margin-top:30px;}
-button, select{padding:10px 18px; margin:8px; font-size:14px; cursor:pointer;}
-.slider{width:220px;}
-
-/* ===== END OF DATA ===== */
-    
-/* ===== MOBILE RESPONSIVE DESIGN ===== */
-@media screen and (max-width: 768px) {
-
-    /* MENU BUTTON */
-    .menu-toggle {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background: #1e293b;
-        color: white;
-        border: none;
-        font-size: 16px;
-        cursor: pointer;
-    }
- /* GLASS DROPDOWN MENU */
-    nav {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-
-        /* glass effect */
-        background: rgba(30, 41, 59, 0.6);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-
-        margin: 10px;
-        padding: 10px 0;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    nav a {
-        margin: 10px 0;
-        font-size: 14px;
-        color: white;
-    }
-}
-    /* HIDE NAV BY DEFAULT */
-    nav {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        background: #0f172a;
-        padding: 10px 0;
-    }
-
-    /* SHOW WHEN ACTIVE */
-    nav.active {
-        display: flex;
-    }
- 
-    /* FOOTER */
-    footer {
-        font-size: 12px;
-        padding: 15px;
-    }
-
-    /* CANVAS (CHART) */
-    canvas {
-        width: 100% !important;
-        height: auto !important;
-    }
-}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>Papua New Guinea University of Technology</h1>
-    <h2>Faculty of Engineering</h2>
-    <h2>School of Electrical and Communications Engineering</h2>
-    <h2>EN411- Research Project A</h2>
-    <h2>Research Topic:Design of Surge Protection System for Telecommunication Applications.</h2>
-        
-    <h2>Research ID: RPEE26-PRKu-04 </h2> 
-    <p><strong>Iso Yawi</strong> </p>
-    <p>Bachelor of Engineering in Electrical Engineering (HONORS).</p>
-    <p>Academic Project Supervisor: Professor Raj Kumar (PhD - Electronic Engineering).</p>
-    <p>1) Industry Project Supervisor: Mr. Ian Pumuye (BEng- Electrical Engineering -PNGUOT) | Head of Telepower- Vodafone PNG.</p>
-    <p>2) Industry Project Supervisor: Mr. Newman Lyaki (BEng- Electrical Engineering -PNGUOT) | Team Leader Highlands Region| Senior Power Projects 
-        Engineer- Telikom LTD.| Managing Director -LANGA ENGINEERING AND CONSTRUCTION LIMITED.</p>
+<h1>Telecom Power System Simulation</h1>
+<p>Vodafone PNG Site Model</p>
 </header>
-    
-   <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
 
-<nav>
-    <a href="#intro">Introduction</a>
-    <a href="#problemstatement">Problem Statement</a>
-    <a href="#researchquestion">Research Question</a>
-    <a href="#objectives">Objectives</a>
-    <a href="#methodology">Methodology</a>
-    <a href="#tools">Tools</a>
-    <a href="#chart">Data</a>
-    <a href="#references">References</a>
-    <a href="#projecttimeline">Project Time Line</a>
-    <a href="#vocabulary">Vocabulary</a>                                          
-</nav>
-                                
-</nav>
-body{font-family:Arial; background:#f4f4f4; text-align:center;}
-.system{display:flex; justify-content:center; gap:25px; margin-top:40px; align-items:center;}
-.block{width:170px; padding:15px; border:2px solid black; background:white; font-weight:bold;}
-.line{width:90px; height:8px; background:#bbb; position:relative; overflow:hidden;}
-.vertical{width:8px; height:80px;}
-.branch{display:flex; flex-direction:column; align-items:center;}
-.current{width:10px; height:10px; background:red; border-radius:50%; position:absolute;}
-.currentV{width:10px; height:10px; background:red; border-radius:50%; position:absolute;}
-.indicator{width:20px; height:20px; border-radius:50%; margin:auto; margin-top:5px; background:red; border:2px solid black;}
-.controls{margin-top:30px;}
-button, select{padding:10px 18px; margin:8px; font-size:14px; cursor:pointer;}
-.slider{width:220px;}
-</style>
-</head>
-<body>
+<p><strong>Simulation of telecom power flow of a BTS site</strong></p>
+<a href="index.html">← Back Home</a>
 
-<p> <strong>Telecom Power Simulator</strong></p> <br>
-<p> This is a simulation of exact power ststem of a Vodafone PNG site in an urban center in PNG </p>
-<a href="index.html">HOME</a>
-
+<!-- SYSTEM -->
 <div class="system">
   <div class="block">AC GRID<br>Voltage: <span id="gridV">240V</span></div>
   <div class="line" id="l1"></div>
+
   <div class="block">RECTIFIER<br>AC → DC</div>
   <div class="line" id="l2"></div>
-  <div class="block">DC BUS<br>Voltage: -48V</div>
+
+  <div class="block">DC BUS<br>-48V</div>
+
   <div class="branch">
     <div class="line vertical" id="l3"></div>
-    <div class="block">BATTERY<br>SOC: <span id="soc">80.0</span>%</div>
+    <div class="block">BATTERY<br>SOC: <span id="soc">80</span>%</div>
   </div>
+
   <div class="branch">
     <div class="line vertical" id="l4"></div>
-    <div class="block">LOAD<br>Voltage: 48V<br>Current: <span id="loadCurrent">20</span>A</div>
+    <div class="block">LOAD<br><span id="loadCurrent">20</span>A</div>
   </div>
 </div>
 
+<!-- GENSET -->
 <div class="system">
-  <div class="block">DC GENSET<br>Voltage: <span id="genV">0V</span><div id="genLight" class="indicator"></div></div>
+  <div class="block">GENSET<br><span id="genV">0V</span>
+  <div id="genLight" class="indicator"></div></div>
+
   <div class="line" id="l5"></div>
-  <div class="block">BATTERY CHARGER</div>
+  <div class="block">CHARGER</div>
 </div>
 
+<!-- CONTROLS -->
 <div class="controls">
 <button onclick="toggleGrid()">Toggle Grid</button><br>
-<button onclick="manualStart()">Manual Genset START</button>
-<button onclick="manualStop()">Manual Genset STOP</button>
-<select id="gensetMode" onchange="setGensetMode(this.value)">
-<option value="manual">Manual Genset Mode</option>
-<option value="auto">Auto Genset Mode</option>
+<button onclick="manualStart()">Start Genset</button>
+<button onclick="manualStop()">Stop Genset</button>
+
+<select onchange="setMode(this.value)">
+<option value="manual">Manual</option>
+<option value="auto">Auto</option>
 </select>
+
 <br><br>
-Load Current (Traffic Simulation)<br>
-<input type="range" min="5" max="120" value="20" class="slider" id="loadSlider">
+Load:
+<input type="range" min="5" max="120" value="20" id="loadSlider" class="slider">
 </div>
 
-<div style="margin-top:20px;font-size:18px">
+<p>
 Grid: <span id="gridStatus">ON</span> |
 Genset: <span id="genStatus">OFF</span> |
 Mode: <span id="modeStatus">Manual</span>
-</div>
-
-<audio id="gensetSound" loop>
-<source src="https://www.soundjay.com/mechanical/sounds/diesel-engine-idle-01.mp3" type="audio/mpeg">
-</audio>
+</p>
 
 <script>
-let grid=true, genset=false, manual=true, auto=false, acOutput=true;
-let soc=80, loadCurrent=20;
-const slider=document.getElementById("loadSlider");
-const sound=document.getElementById("gensetSound");
 
-slider.oninput=function(){loadCurrent=this.value; document.getElementById("loadCurrent").innerText=loadCurrent;}
+/* ===== VARIABLES ===== */
+let grid = true;
+let genset = false;
+let auto = false;
+let soc = 80;
+let load = 20;
 
-function toggleGrid(){grid=!grid; document.getElementById("gridStatus").innerText=grid?"ON":"OFF";}
-function manualStart(){genset=true; manual=true; auto=false; document.getElementById("modeStatus").innerText="Manual"; sound.play();}
-function manualStop(){genset=false; manual=true; auto=false; document.getElementById("modeStatus").innerText="Manual"; sound.pause();}
-function setGensetMode(mode){auto=(mode==="auto"); manual=!auto; document.getElementById("modeStatus").innerText=auto?"Auto":"Manual";}
+const slider = document.getElementById("loadSlider");
 
-// Animate line dots
-function animateLine(lineId, vertical=false){
-  const line=document.getElementById(lineId);
-  const dot=document.createElement("div");
-  dot.className=vertical?"currentV":"current";
-  line.appendChild(dot);
-  let pos=-10;
-  function move(){ 
-    const speed=2+loadCurrent/50;
-    if(vertical){ pos+=speed; if(pos>100) pos=-10; dot.style.top=pos+"%";}
-    else{ pos+=speed; if(pos>100) pos=-10; dot.style.left=pos+"%";}
-    requestAnimationFrame(move);
-  }
-  move();
-}
-animateLine("l1"); animateLine("l2"); animateLine("l4", true);
-
-let batteryFlow;
-function updateBatteryFlow(){
-  if(batteryFlow){batteryFlow.remove(); batteryFlow=null;}
-  if((grid && acOutput) || genset){
-    batteryFlow=document.createElement("div");
-    batteryFlow.className=(genset&&!grid)?"current":"currentV";
-    const lineId=(genset&&!grid)?"l5":"l3";
-    document.getElementById(lineId).appendChild(batteryFlow);
-    let pos=-10;
-    function move(){ pos+=1+loadCurrent/100; if(pos>100) pos=-10; if(genset&&!grid){batteryFlow.style.left=pos+"%";} else{batteryFlow.style.top=pos+"%";} requestAnimationFrame(move);}
-    move();
-  }
+/* ===== LOAD CONTROL ===== */
+slider.oninput = function(){
+    load = this.value;
+    document.getElementById("loadCurrent").innerText = load;
 }
 
-// AC hysteresis thresholds
-const AC_OFF_SOC = 100; 
-const AC_ON_SOC = 49; 
+/* ===== BUTTONS ===== */
+function toggleGrid(){
+    grid = !grid;
+    document.getElementById("gridStatus").innerText = grid ? "ON" : "OFF";
+}
 
-// Main simulation loop
-setInterval(function(){
-  // Hysteresis logic for AC/grid
-  if(grid){
-    if(acOutput){ // currently ON
-      if(soc >= AC_OFF_SOC) acOutput=false; // turn AC off at 100%
-    } else { // currently OFF
-      if(soc <= AC_ON_SOC) acOutput=true; // resume AC when SOC <=49%
+function manualStart(){
+    genset = true;
+}
+
+function manualStop(){
+    genset = false;
+}
+
+function setMode(m){
+    auto = (m === "auto");
+    document.getElementById("modeStatus").innerText = auto ? "Auto" : "Manual";
+}
+
+/* ===== FLOW ANIMATION ===== */
+function animate(id, vertical=false){
+    const line = document.getElementById(id);
+    const dot = document.createElement("div");
+    dot.className = vertical ? "currentV" : "current";
+    line.appendChild(dot);
+
+    let pos = -10;
+
+    function move(){
+        pos += 2;
+        if(pos > 100) pos = -10;
+
+        if(vertical) dot.style.top = pos + "%";
+        else dot.style.left = pos + "%";
+
+        requestAnimationFrame(move);
     }
-    if(acOutput) soc += 0.25; // AC charging
-    if(auto && acOutput) genset=false; // disable genset while AC active
-  } else {
-    acOutput=false;
-  }
+    move();
+}
 
-  // Auto genset (grid OFF only)
-  if(auto && !grid){
-    if(soc < 49) genset=true;
-    else if(soc >= 100) genset=false;
-  }
+animate("l1");
+animate("l2");
+animate("l4", true);
 
-  // Genset battery charging
-  if(genset){ soc += 0.3; if(soc>100) soc=100; }
+/* ===== MAIN LOOP ===== */
+setInterval(()=>{
 
-  // Load consumption
-  soc -= loadCurrent*0.002;
-  if(soc<0) soc=0;
+    if(auto && !grid){
+        genset = soc < 50;
+    }
 
-  // Update SOC display
-  document.getElementById("soc").innerText = soc.toFixed(1);
+    if(grid) soc += 0.2;
+    if(genset) soc += 0.3;
 
-  // Update battery animation
-  updateBatteryFlow();
+    soc -= load * 0.002;
 
-  // Update genset indicators
-  document.getElementById("genStatus").innerText = genset?"ON":"OFF";
-  document.getElementById("genV").innerText = genset?"48V":"0V";
-  const light=document.getElementById("genLight");
-  light.style.background=genset?"green":"red";
-  if(genset){ sound.play(); } else { if(!manual) sound.pause(); }
+    if(soc > 100) soc = 100;
+    if(soc < 0) soc = 0;
 
-  // Update AC/grid voltage display
-  document.getElementById("gridV").innerText = (grid && acOutput)?"240V":"0V";
+    document.getElementById("soc").innerText = soc.toFixed(1);
+
+    document.getElementById("genStatus").innerText = genset ? "ON" : "OFF";
+    document.getElementById("genV").innerText = genset ? "48V" : "0V";
+
+    document.getElementById("gridV").innerText = grid ? "240V" : "0V";
+
+    document.getElementById("genLight").style.background = genset ? "green" : "red";
 
 },200);
+
 </script>
+
 </body>
 </html>
-
