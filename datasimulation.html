@@ -8,7 +8,7 @@
 
 <style>
 
-/* ===== GLOBAL ===== */
+/* ===================== GLOBAL ===================== */
 body {
     font-family: Arial;
     margin: 0;
@@ -18,41 +18,88 @@ body {
     background:
         linear-gradient(rgba(2,6,23,0.8), rgba(15,23,42,0.9)),
         url("logos.png");
+
     background-size: cover;
     background-attachment: fixed;
 }
 
-/* ===== HEADER ===== */
-header {
-    padding: 30px;
+/* ===================== STICKY HEADER ===================== */
+#mainHeader {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
     background: #020617;
-    border-bottom: 2px solid #38bdf8;
-}
-
-header h1 {
     color: #38bdf8;
+
+    padding: 35px 15px;
+    border-bottom: 2px solid #38bdf8;
+
+    transition: all 0.4s ease;
 }
 
-/* ===== SYSTEM LAYOUT ===== */
+/* HEADER TEXT */
+#mainHeader h1 {
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+#mainHeader h2 {
+    margin: 3px 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #cbd5e1;
+}
+
+#mainHeader p {
+    margin: 2px 0;
+    font-size: 13px;
+    color: #e2e8f0;
+}
+
+/* PROJECT TITLE */
+.project-title {
+    margin-top: 8px;
+    font-size: 16px;
+    color: white;
+}
+
+/* ===================== COLLAPSED HEADER ===================== */
+#mainHeader.shrink {
+    padding: 8px 10px;
+}
+
+#mainHeader.shrink h1,
+#mainHeader.shrink h2,
+#mainHeader.shrink p {
+    display: none;
+}
+
+#mainHeader.shrink .project-title {
+    display: block;
+    font-size: 14px;
+}
+
+/* ===================== LAYOUT ===================== */
 .system {
     display: flex;
     justify-content: center;
     gap: 25px;
     margin-top: 40px;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .block {
     width: 170px;
     padding: 15px;
     border: 2px solid #38bdf8;
-    background: rgba(255,255,255,0.1);
-    font-weight: bold;
+    background: rgba(255,255,255,0.08);
     border-radius: 10px;
+    font-weight: bold;
 }
 
-/* ===== LINES ===== */
+/* ===================== LINES ===================== */
 .line {
     width: 90px;
     height: 8px;
@@ -66,7 +113,7 @@ header h1 {
     height: 80px;
 }
 
-/* ===== CURRENT FLOW ===== */
+/* ===================== FLOW DOT ===================== */
 .current, .currentV {
     width: 10px;
     height: 10px;
@@ -75,7 +122,7 @@ header h1 {
     position: absolute;
 }
 
-/* ===== INDICATOR ===== */
+/* ===================== INDICATOR ===================== */
 .indicator {
     width: 20px;
     height: 20px;
@@ -86,7 +133,7 @@ header h1 {
     border: 2px solid black;
 }
 
-/* ===== CONTROLS ===== */
+/* ===================== CONTROLS ===================== */
 .controls {
     margin-top: 30px;
 }
@@ -101,7 +148,6 @@ button, select {
     width: 220px;
 }
 
-/* ===== LINK ===== */
 a {
     color: #38bdf8;
 }
@@ -111,16 +157,29 @@ a {
 
 <body>
 
-<header>
-<h1>Telecom Power System Simulation</h1>
-<p>Vodafone PNG Site Model</p>
+<!-- ===================== HEADER ===================== -->
+<header id="mainHeader">
+
+    <h1>Papua New Guinea University of Technology</h1>
+    <h2>Faculty of Engineering</h2>
+    <h2>School of Electrical and Communications Engineering</h2>
+    <h2>EN411 - Research Project A</h2>
+
+    <div class="project-title">
+        Surge Protection System for Telecommunication Applications
+    </div>
+
+    <p>Research ID: RPEE26-PRKu-04</p>
+    <p><strong>Iso Yawi</strong></p>
+
 </header>
 
-<p><strong>Simulation of telecom power flow of a BTS site</strong></p>
-<a href="index.html">← Back Home</a>
+<!-- ===================== LINK ===================== -->
+<p><a href="index.html">← Back Home</a></p>
 
-<!-- SYSTEM -->
+<!-- ===================== SYSTEM ===================== -->
 <div class="system">
+
   <div class="block">AC GRID<br>Voltage: <span id="gridV">240V</span></div>
   <div class="line" id="l1"></div>
 
@@ -138,20 +197,27 @@ a {
     <div class="line vertical" id="l4"></div>
     <div class="block">LOAD<br><span id="loadCurrent">20</span>A</div>
   </div>
+
 </div>
 
-<!-- GENSET -->
+<!-- ===================== GENSET ===================== -->
 <div class="system">
-  <div class="block">GENSET<br><span id="genV">0V</span>
-  <div id="genLight" class="indicator"></div></div>
+
+  <div class="block">
+    GENSET<br><span id="genV">0V</span>
+    <div id="genLight" class="indicator"></div>
+  </div>
 
   <div class="line" id="l5"></div>
+
   <div class="block">CHARGER</div>
+
 </div>
 
-<!-- CONTROLS -->
+<!-- ===================== CONTROLS ===================== -->
 <div class="controls">
-<button onclick="toggleGrid()">Toggle Grid</button><br>
+
+<button onclick="toggleGrid()">Toggle Grid</button>
 <button onclick="manualStart()">Start Genset</button>
 <button onclick="manualStop()">Stop Genset</button>
 
@@ -161,8 +227,10 @@ a {
 </select>
 
 <br><br>
+
 Load:
 <input type="range" min="5" max="120" value="20" id="loadSlider" class="slider">
+
 </div>
 
 <p>
@@ -171,24 +239,35 @@ Genset: <span id="genStatus">OFF</span> |
 Mode: <span id="modeStatus">Manual</span>
 </p>
 
+<!-- ===================== SCRIPT ===================== -->
 <script>
 
-/* ===== VARIABLES ===== */
+/* HEADER SHRINK */
+window.addEventListener("scroll", function () {
+    const header = document.getElementById("mainHeader");
+    if (window.scrollY > 80) {
+        header.classList.add("shrink");
+    } else {
+        header.classList.remove("shrink");
+    }
+});
+
+/* VARIABLES */
 let grid = true;
 let genset = false;
 let auto = false;
 let soc = 80;
 let load = 20;
 
+/* SLIDER */
 const slider = document.getElementById("loadSlider");
 
-/* ===== LOAD CONTROL ===== */
 slider.oninput = function(){
     load = this.value;
     document.getElementById("loadCurrent").innerText = load;
-}
+};
 
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 function toggleGrid(){
     grid = !grid;
     document.getElementById("gridStatus").innerText = grid ? "ON" : "OFF";
@@ -207,7 +286,7 @@ function setMode(m){
     document.getElementById("modeStatus").innerText = auto ? "Auto" : "Manual";
 }
 
-/* ===== FLOW ANIMATION ===== */
+/* FLOW ANIMATION */
 function animate(id, vertical=false){
     const line = document.getElementById(id);
     const dot = document.createElement("div");
@@ -232,7 +311,7 @@ animate("l1");
 animate("l2");
 animate("l4", true);
 
-/* ===== MAIN LOOP ===== */
+/* MAIN LOOP */
 setInterval(()=>{
 
     if(auto && !grid){
@@ -248,13 +327,12 @@ setInterval(()=>{
     if(soc < 0) soc = 0;
 
     document.getElementById("soc").innerText = soc.toFixed(1);
-
     document.getElementById("genStatus").innerText = genset ? "ON" : "OFF";
     document.getElementById("genV").innerText = genset ? "48V" : "0V";
-
     document.getElementById("gridV").innerText = grid ? "240V" : "0V";
 
-    document.getElementById("genLight").style.background = genset ? "green" : "red";
+    document.getElementById("genLight").style.background =
+        genset ? "green" : "red";
 
 },200);
 
