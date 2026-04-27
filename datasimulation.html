@@ -152,6 +152,80 @@ a {
     color: #38bdf8;
 }
 
+/* ===================== MOBILE VIEW ===================== */
+@media screen and (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    /* HEADER */
+    #mainHeader {
+        padding: 20px 10px;
+    }
+
+    #mainHeader h1 {
+        font-size: 16px;
+    }
+
+    #mainHeader h2 {
+        font-size: 12px;
+    }
+
+    #mainHeader p {
+        font-size: 11px;
+    }
+
+    /* SYSTEM LAYOUT → STACK VERTICALLY */
+    .system {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    /* BLOCKS FULL WIDTH */
+    .block {
+        width: 90%;
+        max-width: 320px;
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    /* LINES SMALLER */
+    .line {
+        width: 60px;
+        height: 6px;
+    }
+
+    .vertical {
+        height: 50px;
+        width: 6px;
+    }
+
+    /* CONTROLS STACK */
+    .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    button, select {
+        width: 90%;
+        max-width: 300px;
+        font-size: 14px;
+    }
+
+    .slider {
+        width: 90%;
+    }
+
+    /* TEXT SCALE */
+    p {
+        padding: 0 10px;
+    }
+}
+
 /* ===== FOOTER ===== */
 footer {
     text-align: center;
