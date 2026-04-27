@@ -314,9 +314,22 @@ animate("l4", true);
 /* MAIN LOOP */
 setInterval(()=>{
 
-    if(auto && !grid){
-        genset = soc < 80;
+// ================= AUTO GENSET CONTROL (FIXED) =================
+const GENSET_START_SOC = 50;   // turn ON when battery is LOW
+const GENSET_STOP_SOC  = 90;   // turn OFF when fully charged
+
+if (auto && !grid) {
+
+    // START genset when SOC is LOW
+    if (soc <= GENSET_START_SOC) {
+        genset = true;
     }
+
+    // STOP genset when SOC reaches target charge
+    else if (soc >= GENSET_STOP_SOC) {
+        genset = false;
+    }
+}
 
     if(grid) soc += 0.2;
     if(genset) soc += 0.3;
